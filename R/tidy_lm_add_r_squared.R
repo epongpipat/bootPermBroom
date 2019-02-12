@@ -4,7 +4,6 @@
 #' @param tidy_df a \code{tidy} table of \code{lm} results
 #' @param n the number of participants analyzed. Using nrow(data), where data is the dataframe used in \code{lm} is a good option.
 #'
-#' @import broom dplyr modelr tibble
 #'
 #' @return column of r.squared and adj.r.squared added a \code{tidy} table of a \code{lm}
 #' @export

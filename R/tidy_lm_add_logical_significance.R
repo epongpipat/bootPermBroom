@@ -6,8 +6,6 @@
 #' @param alpha = 0.05 (default). can specify another alpha value
 #' @param sig_column_name = "sig.05" (default). can specify another name for the new column (e.g., sig.alpha.value).
 #'
-#' @import broom dplyr modelr tibble
-#'
 #' @return logical column of significance (i.e., TRUE or FALSE) by comparing p
 #' to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm}
 #' @export
