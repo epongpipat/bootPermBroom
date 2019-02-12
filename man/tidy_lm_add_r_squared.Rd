@@ -15,7 +15,7 @@ tidy_lm_add_r_squared(tidy_df, n)
 column of r.squared and adj.r.squared added a \code{tidy} table of a \code{lm}
 }
 \description{
-add R^2 and adjusted R^2
+add r.squared and adj.r.squared to \code{tidy} table of \code{lm} results.
 }
 \examples{
 data <- tibble(a = scale(sample.int(100), scale = F),

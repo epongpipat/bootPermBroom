@@ -1,5 +1,5 @@
-#' @title \code{permute_lm_tidy}
-#' @description perform permutation testing and output permutation p-value in tidy format
+#' @title \code{tidy_lm_permute}
+#' @description \code{permute} \code{lm} and output the results as a \code{tidy} table.
 #' @author Ekarin Eric Pongpipat
 #' @param data a data.frame to be analyzed
 #' @param formula a formula to be analyzed as typically written for the \code{lm} function
@@ -9,16 +9,16 @@
 #' @return outputs \code{tidy} table that includes the p.value from the permutation of a \code{lm} test
 #'
 #' @examples
-#' data <- tibble(a = scale(sample.int(100), scale = F),
-#'               b = scale(sample.int(100), scale = F),
-#'               c = b^2,
-#'               d = scale(sample.int(100), scale = F))
+#' data <- tibble(
+#'   a = scale(sample.int(100), scale = F),
+#'   b = scale(sample.int(100), scale = F),
+#'   c = b^2,
+#'   d = scale(sample.int(100), scale = F)
+#' )
 #' df_tidy <- permute_lm_tidy(data = data, formula = "a ~ b + c + d", n_permute = 1000, var_permute = "a")
-#' permute_lm_tidy(data = data, formula = "a ~ b + c", n_permute = 100, "a")
-#'   %>% tidy_add_r_squared(., n = nrow(data))
+#' tidy_lm_permute(data = data, formula = "a ~ b + c", n_permute = 100, "a")
 #' @export
 tidy_lm_permute <- function(data, formula, n_permute = 1000, var_permute) {
-
   if (n_permute <= 1) {
     stop(paste0("n_permute must be larger than 1"))
   } else if (is.null(var_permute)) {

@@ -21,7 +21,7 @@ logical column of significance (i.e., TRUE or FALSE) by comparing p
 to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm}
 }
 \description{
-add column of logical significance to lm tidy table
+add a logical column of significance comparing p-values to alpha
 }
 \examples{
 data <- tibble(a = scale(sample.int(100), scale = F),

@@ -1,5 +1,5 @@
-#' @title \code{tidy_lm_add_logical_significance}
-#' @description add column of logical significance to lm tidy table
+#' @title \code{tidy_lm_add_logical_p_values}
+#' @description add a logical column of significance comparing p-values to alpha
 #' @author Ekarin Eric Pongpipat
 #' @param tidy_df a \code{tidy} table of \code{lm} results
 #' @param p_values = "p.value" (default). can specificy another column of p.values
@@ -11,10 +11,12 @@
 #' @export
 #'
 #' @examples
-#' data <- tibble(a = scale(sample.int(100), scale = F),
-#'                            b = scale(sample.int(100), scale = F),
-#'                            c = b^2,
-#'                            d = scale(sample.int(100), scale = F))
+#' data <- tibble(
+#'   a = scale(sample.int(100), scale = F),
+#'   b = scale(sample.int(100), scale = F),
+#'   c = b^2,
+#'   d = scale(sample.int(100), scale = F)
+#' )
 #' lm(a ~ b, data) %>%
 #'   tidy() %>%
 #'   tidy_lm_add_logical_p_values()
