@@ -1,4 +1,4 @@
-#' @title \code{tidy_lm_add_logical_p_values}
+#' @title \code{tidy_lm_add_logical_significance}
 #' @description add a logical column of significance comparing p-values to alpha
 #' @author Ekarin Eric Pongpipat
 #' @param tidy_df a \code{tidy} table of \code{lm} results
@@ -19,8 +19,8 @@
 #' )
 #' lm(a ~ b, data) %>%
 #'   tidy() %>%
-#'   tidy_lm_add_logical_p_values()
-tidy_lm_add_logical_p_values <- function(tidy_df, p_values = p.value, alpha = 0.05, sig_column_name = "sig.05") {
+#'   tidy_lm_add_logical_significance()
+tidy_lm_add_logical_significance <- function(tidy_df, p_values = p.value, alpha = 0.05, sig_column_name = "sig.05") {
   tidy_df %>%
     rowwise() %>%
     mutate(!!sig_column_name := ifelse(as.numeric(eval(as.name(p_values))) < alpha, TRUE, FALSE)) %>%

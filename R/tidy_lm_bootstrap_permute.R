@@ -33,13 +33,13 @@ tidy_lm_bootstrap_permute <- function(data, formula, n_bootstrap = 1000, bootstr
   lm_tidy <- lm %>% tidy()
 
   # boostrap ----
-  df_bootstrap <- bootstrap(data, n = n_bootstrap)
+  df_bootstrap <- modelr::bootstrap(data, n = n_bootstrap)
   df_bootstrap_lm <- map(df_bootstrap[["strap"]], ~ lm(as.formula(formula), data = .))
   df_bootstrap_tidy <- map_df(df_bootstrap_lm, broom::tidy, .id = "id")
   df_bootstrap_tidy_rsq <- df_bootstrap_tidy %>% tidy_lm_add_r_squared(., nrow(data))
 
   # permute ----
-  df_permute <- permute(data, n_permute, var_permute)
+  df_permute <- modelr::permute(data, n_permute, var_permute)
   df_lm_permute <- map(df_permute[["perm"]], ~ lm(as.formula(formula), data = .))
   df_lm_permute_tidy <- map_df(df_lm_permute, broom::tidy, .id = "id")
 
