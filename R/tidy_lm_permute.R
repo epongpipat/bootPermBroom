@@ -1,24 +1,31 @@
 #' @title \code{permute_lm_tidy}
 #' @description perform permutation testing and output permutation p-value in tidy format
 #' @author Ekarin Eric Pongpipat
-#' @param tidy_df
-#' @param formula
-#' @param n_permute
-#' @param var_permute one or vector of two or more variables
+#' @param data a data.frame to be analyzed
+#' @param formula a formula to be analyzed as typically written for the \code{lm} function
+#' @param n_permute = 1000 (default) the number of permutations to perform
+#' @param var_permute variable(s) to unlink in the permutation
 #'
 #' @return outputs \code{tidy} table that includes the p.value from the permutation of a \code{lm} test
-#' @import tibble dplyr broom
+#' @import broom dplyr modelr tibble
 #'
 #' @examples
 #'  set.seed(2019)
-#' df <- tibble(a = scale(sample.int(100), scale = F),
+#' data <- tibble(a = scale(sample.int(100), scale = F),
 #'               b = scale(sample.int(100), scale = F),
 #'               c = b^2,
 #'               d = scale(sample.int(100), scale = F))
-#' df_tidy <- permute_lm_tidy(data = df, formula = "a ~ b + c + d", n_permute = 1000, var_permute = "a")
-#' permute_lm_tidy(data = df, formula = "a ~ b + c", n_permute = 100, "a") %>% tidy_add_r_squared(., n = nrow(df))
+#' df_tidy <- permute_lm_tidy(data = data, formula = "a ~ b + c + d", n_permute = 1000, var_permute = "a")
+#' permute_lm_tidy(data = data, formula = "a ~ b + c", n_permute = 100, "a") %>% tidy_add_r_squared(., n = nrow(data))
 #' @export
-tidy_lm_permute <- function(df, formula, n_permute, var_permute) {
+tidy_lm_permute <- function(data, formula, n_permute = 1000, var_permute) {
+
+  if (n_permute <= 1) {
+    stop(paste0("n_permute must be larger than 1"))
+  } else if (is.null(var_permute)) {
+    stop(paste0("var_permute must be defined"))
+  }
+
   lm <- lm(as.formula(formula), data)
   lm_tidy <- lm %>% tidy()
 

@@ -1,11 +1,12 @@
 Package: broomExtra
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Permutes lm() and adds other useful statistics (broomExtra)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Ekarin Eric Pongpipat
+Maintainer: Ekarin Eric Pongpipat <epongpipat@gmail.com>
+Description: A package to permute an analysis using lm and append useful statistics to a tidy table
+Imports: broom, dplyr, modelr, tibble
 Encoding: UTF-8
 LazyData: true
+URL: http://github.com/epongpipat/broomExtra
+RoxygenNote: 6.1.1
