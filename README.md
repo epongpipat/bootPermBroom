@@ -14,3 +14,7 @@ A package to `permute` and `bootstrap` an analysis using `lm` and append useful 
 ```{r}
 devtools::install_github("epongpipat/broomExtra")
 ```
+
+## Acknowledgements
+
+This package relies on the following `tidyverse` packages: `broom`, `dplyr`, `modelr`, and `tibble`.
