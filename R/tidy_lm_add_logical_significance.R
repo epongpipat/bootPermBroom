@@ -21,6 +21,11 @@
 #'   tidy() %>%
 #'   tidy_lm_add_logical_significance()
 tidy_lm_add_logical_significance <- function(tidy_df, p_values = p.value, alpha = 0.05, sig_column_name = "sig.05") {
+
+  # load packages if not already ----
+  packages <- c("broom", "dplyr", "modelr", "tibble")
+  xfun::pkg_attach2(packages, message = F)
+
   tidy_df %>%
     rowwise() %>%
     mutate(!!sig_column_name := ifelse(as.numeric(eval(as.name(p_values))) < alpha, TRUE, FALSE)) %>%

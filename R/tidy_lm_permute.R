@@ -19,6 +19,11 @@
 #' tidy_lm_permute(data = data, formula = "a ~ b + c", n_permute = 100, "a")
 #' @export
 tidy_lm_permute <- function(data, formula, n_permute = 1000, var_permute) {
+
+  # load packages if not already ----
+  packages <- c("broom", "dplyr", "modelr", "tibble")
+  xfun::pkg_attach2(packages, message = F)
+
   if (n_permute <= 1) {
     stop(paste0("n_permute must be larger than 1"))
   } else if (is.null(var_permute)) {

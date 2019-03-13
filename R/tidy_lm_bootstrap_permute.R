@@ -21,6 +21,10 @@
 #' @export
 tidy_lm_bootstrap_permute <- function(data, formula, n_bootstrap = 1000, bootstrap_ci = 0.95, n_permute = 1000, var_permute, r_squared_ci = 0.95) {
 
+  # load packages if not already ----
+  packages <- c("broom", "dplyr", "modelr", "tibble")
+  xfun::pkg_attach2(packages, message = F)
+
   # initial-check ----
   if (n_permute <= 1) {
     stop(paste0("n_permute must be larger than 1"))

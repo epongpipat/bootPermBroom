@@ -19,6 +19,11 @@
 #'   tidy() %>%
 #'   tidy_lm_add_r_squared(., n = nrow(data))
 tidy_lm_add_r_squared <- function(tidy_df, n) {
+
+  # load packages if not already ----
+  packages <- c("broom", "dplyr", "modelr", "tibble")
+  xfun::pkg_attach2(packages, message = F)
+
   if (n <= 1) {
     stop(paste0("n must be larger than 1"))
   }
