@@ -30,12 +30,16 @@ outputs \code{tidy} table that includes the p.value from the permutation of a \c
 \code{permute} \code{lm} and output the results as a \code{tidy} table.
 }
 \examples{
+packages <- c("broom", "broomExtra", "dplyr", "modelr", "purrr", "tibble")
+xfun::pkg_attach2(packages, message = F)
+
 data <- tibble(
   a = scale(sample.int(100), scale = F),
   b = scale(sample.int(100), scale = F),
   c = b^2,
   d = scale(sample.int(100), scale = F)
 )
+
 tidy_lm_bootstrap_permute(data, a ~ b, var_permute = "a")
 }
 \author{

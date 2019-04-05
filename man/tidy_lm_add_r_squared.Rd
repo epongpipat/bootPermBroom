@@ -18,12 +18,16 @@ column of r.squared and adj.r.squared added a \code{tidy} table of a \code{lm}
 add r.squared and adj.r.squared to \code{tidy} table of \code{lm} results.
 }
 \examples{
+packages <- c("broom", "broomExtra", "dplyr", "modelr", "tibble")
+xfun::pkg_attach2(packages, message = F)
+
 data <- tibble(
   a = scale(sample.int(100), scale = F),
   b = scale(sample.int(100), scale = F),
   c = b^2,
   d = scale(sample.int(100), scale = F)
 )
+
 lm(a ~ b, data) \%>\%
   tidy() \%>\%
   tidy_lm_add_r_squared(., n = nrow(data))

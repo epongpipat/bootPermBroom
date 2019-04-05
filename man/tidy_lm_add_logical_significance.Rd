@@ -4,7 +4,7 @@
 \alias{tidy_lm_add_logical_significance}
 \title{\code{tidy_lm_add_logical_significance}}
 \usage{
-tidy_lm_add_logical_significance(tidy_df, p_values = p.value,
+tidy_lm_add_logical_significance(tidy_df, p_values = "p.value",
   alpha = 0.05, sig_column_name = "sig.05")
 }
 \arguments{
@@ -24,12 +24,16 @@ to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm}
 add a logical column of significance comparing p-values to alpha
 }
 \examples{
+packages <- c("broom", "broomExtra", "dplyr", "modelr", "tibble")
+xfun::pkg_attach2(packages, message = F)
+
 data <- tibble(
   a = scale(sample.int(100), scale = F),
   b = scale(sample.int(100), scale = F),
   c = b^2,
   d = scale(sample.int(100), scale = F)
 )
+
 lm(a ~ b, data) \%>\%
   tidy() \%>\%
   tidy_lm_add_logical_significance()

@@ -9,19 +9,22 @@
 #' @return outputs \code{tidy} table that includes the p.value from the permutation of a \code{lm} test
 #'
 #' @examples
+#' packages <- c("broom", "broomExtra", "dplyr", "modelr", "purrr", "tibble")
+#' xfun::pkg_attach2(packages, message = F)
+#'
 #' data <- tibble(
 #'   a = scale(sample.int(100), scale = F),
 #'   b = scale(sample.int(100), scale = F),
 #'   c = b^2,
 #'   d = scale(sample.int(100), scale = F)
 #' )
-#' df_tidy <- permute_lm_tidy(data = data, formula = "a ~ b + c + d", n_permute = 1000, var_permute = "a")
-#' tidy_lm_permute(data = data, formula = "a ~ b + c", n_permute = 100, "a")
+#'
+#' tidy_lm_permute(data = data, formula = "a ~ b + c", n_permute = 100, var_permute = "a")
 #' @export
 tidy_lm_permute <- function(data, formula, n_permute = 1000, var_permute) {
 
   # load packages if not already ----
-  packages <- c("broom", "dplyr", "modelr", "tibble")
+  packages <- c("broom", "dplyr", "modelr", "purrr", "tibble")
   xfun::pkg_attach2(packages, message = F)
 
   if (n_permute <= 1) {
