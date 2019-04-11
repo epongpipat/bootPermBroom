@@ -12,7 +12,7 @@ A package to `permute` and `bootstrap` an analysis using `lm` and append useful 
 ## Installation
 
 ```{r}
-devtools::install_github("epongpipat/broomExtra")
+devtools::install_github("epongpipat/bootPermBroom")
 ```
 
 ## Acknowledgements
