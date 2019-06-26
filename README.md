@@ -2,6 +2,8 @@
 
 A package to `permute` and `bootstrap` an analysis using `lm` and append useful statistics to a `tidy` table
 
+Website: https://ekarinpongpipat.com/bootPermBroom/
+
 ## Functions
 
 1. **tidy_lm_bootstrap_permute**: `permute` and `bootstrap` `lm` and output the results as a `tidy` table.
