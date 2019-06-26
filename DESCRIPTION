@@ -1,4 +1,4 @@
-Package: broomExtra
+Package: bootPermBroom
 Type: Package
 Title: Permutes and bootstraps lm() and adds other useful statistics (broomExtra)
 Version: 0.1.0
@@ -9,5 +9,5 @@ Imports: broom, dplyr, modelr, tibble
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-URL: http://github.com/epongpipat/broomExtra
-BugReports: http://github.com/epongpipat/broomExtra/issues
+URL: http://github.com/epongpipat/bootPermExtra
+BugReports: http://github.com/epongpipat/bootPermExtra/issues

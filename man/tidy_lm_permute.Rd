@@ -32,7 +32,7 @@ data <- tibble(
   d = scale(sample.int(100), scale = F)
 )
 
-tidy_lm_permute(data = data, formula = "a ~ b + c", n_permute = 100, "a")
+tidy_lm_permute(data = data, formula = "a ~ b + c", n_permute = 100, var_permute = "a")
 }
 \author{
 Ekarin Eric Pongpipat
