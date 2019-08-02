@@ -2,7 +2,7 @@
 % Please edit documentation in R/tidy_lm_add_multiple_comparison_correction.R
 \name{tidy_lm_add_multiple_comparison_correction}
 \alias{tidy_lm_add_multiple_comparison_correction}
-\title{\code{tidy_lm_add_logical_significance}}
+\title{\code{tidy_lm_add_multiple_comparison_correction}}
 \usage{
 tidy_lm_add_multiple_comparison_correction(tidy_df, methods = "all")
 }
@@ -10,7 +10,7 @@ tidy_lm_add_multiple_comparison_correction(tidy_df, methods = "all")
 \item{tidy_df}{a \code{tidy} table of \code{lm} results}
 
 \item{methods}{a string or vector \code{c()} of p.adjust methods,
-which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", or "fdr"}
+which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all" (default: "all")}
 }
 \value{
 numeric adjusted p.values column using all or defined mutliple
@@ -22,7 +22,9 @@ add adjusted p-values (i.e., multiple comparison correction methods)
 as a new column using the \code{p.adjust()} function
 }
 \examples{
-library(dplyr); library(broom)
+packages <- c("broom", "bootPermBroom", "dplyr")
+xfun::pkg_attach(packages, message = F, install = T)
+
 lm(salary ~ sex, carData::Salaries) \%>\%
   tidy() \%>\%
   tidy_lm_add_multiple_comparison_correction()

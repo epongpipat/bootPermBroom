@@ -1,18 +1,20 @@
-#' @title \code{tidy_lm_add_logical_significance}
+#' @title \code{tidy_lm_add_multiple_comparison_correction}
 #' @description add adjusted p-values (i.e., multiple comparison correction methods)
 #' as a new column using the \code{p.adjust()} function
 #' @author Ekarin Eric Pongpipat
 #'
 #' @param tidy_df a \code{tidy} table of \code{lm} results
 #' @param methods a string or vector \code{c()} of p.adjust methods,
-#' which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", or "fdr"
+#' which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all" (default: "all")
 #'
 #' @return numeric adjusted p.values column using all or defined mutliple
 #' comparison correction methods. this column is added to a \code{tidy} table
 #' of a \code{lm} result
 #'
 #' @examples
-#' library(dplyr); library(broom)
+#' packages <- c("broom", "bootPermBroom", "dplyr")
+#' xfun::pkg_attach(packages, message = F, install = T)
+#'
 #' lm(salary ~ sex, carData::Salaries) %>%
 #'   tidy() %>%
 #'   tidy_lm_add_multiple_comparison_correction()

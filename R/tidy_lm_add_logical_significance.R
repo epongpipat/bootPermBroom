@@ -9,8 +9,10 @@
 #' to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm} result
 #'
 #' @examples
-#' library(dplyr); library(broom); library(bootPerm)
-#' model <- lm(salary ~ sex, carData::Salaries) %>%
+#' packages <- c("broom", "bootPermBroom", "dplyr")
+#' xfun::pkg_attach(packages, message = F, install = T)
+#'
+#' lm(salary ~ sex, carData::Salaries) %>%
 #'   tidy() %>%
 #'   tidy_lm_add_logical_significance(., c("0.01", "0.05"))
 tidy_lm_add_logical_significance <- function(tidy_df, alpha = 0.05) {

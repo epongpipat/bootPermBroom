@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>tidy_lm_add_logical_significance</code> — tidy_lm_add_multiple_comparison_correction • bootPermBroom</title>
+<title><code>tidy_lm_add_multiple_comparison_correction</code> — tidy_lm_add_multiple_comparison_correction • bootPermBroom</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="<code>tidy_lm_add_logical_significance</code> — tidy_lm_add_multiple_comparison_correction" />
+<meta property="og:title" content="<code>tidy_lm_add_multiple_comparison_correction</code> — tidy_lm_add_multiple_comparison_correction" />
 
 <meta property="og:description" content="add adjusted p-values (i.e., multiple comparison correction methods)
 as a new column using the p.adjust() function" />
@@ -100,7 +100,7 @@ as a new column using the p.adjust() function" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>tidy_lm_add_logical_significance</code></h1>
+    <h1><code>tidy_lm_add_multiple_comparison_correction</code></h1>
     <small class="dont-index">Source: <a href='https://github.com/epongpipat/bootPermExtra/blob/master/R/tidy_lm_add_multiple_comparison_correction.R'><code>R/tidy_lm_add_multiple_comparison_correction.R</code></a></small>
     <div class="hidden name"><code>tidy_lm_add_multiple_comparison_correction.Rd</code></div>
     </div>
@@ -124,7 +124,7 @@ as a new column using the <code><a href='https://www.rdocumentation.org/packages
     <tr>
       <th>methods</th>
       <td><p>a string or vector <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c()</a></code> of p.adjust methods,
-which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", or "fdr"</p></td>
+which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all" (default: "all")</p></td>
     </tr>
     </table>
     
@@ -136,9 +136,11 @@ of a <code>lm</code> result</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>broom</span>)
+    <pre class="examples"><div class='input'><span class='no'>packages</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"broom"</span>, <span class='st'>"bootPermBroom"</span>, <span class='st'>"dplyr"</span>)
+<span class='kw pkg'>xfun</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/xfun/topics/pkg_attach'>pkg_attach</a></span>(<span class='no'>packages</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>install</span> <span class='kw'>=</span> <span class='no'>T</span>)
+
 <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>salary</span> ~ <span class='no'>sex</span>, <span class='kw pkg'>carData</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/carData/topics/Salaries'>Salaries</a></span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/broom/topics/reexports'>tidy</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>tidy</span>() <span class='kw'>%&gt;%</span>
   <span class='fu'>tidy_lm_add_multiple_comparison_correction</span>()</div><div class='output co'>#&gt; <span class='error'>Error in tidy_lm_add_multiple_comparison_correction(.): could not find function "tidy_lm_add_multiple_comparison_correction"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
