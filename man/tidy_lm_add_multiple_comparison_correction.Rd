@@ -9,8 +9,8 @@ tidy_lm_add_multiple_comparison_correction(tidy_df, methods = "all")
 \arguments{
 \item{tidy_df}{a \code{tidy} table of \code{lm} results}
 
-\item{methods}{a string or vector \code{c()} of p.adjust methods,
-which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all" (default: "all")}
+\item{methods}{= "all" (default). a string or vector \code{c()} of p.adjust methods,
+which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all"}
 }
 \value{
 numeric adjusted p.values column using all or defined mutliple

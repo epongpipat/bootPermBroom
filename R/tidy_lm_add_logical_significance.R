@@ -2,11 +2,12 @@
 #' @description add a logical column of significance comparing p-values to alpha
 #' @author Ekarin Eric Pongpipat
 #' @param tidy_df a \code{tidy} table of \code{lm} results
-#' @param p_values = "p.value" (default). can specificy another column of p.values
-#' @param alpha = 0.05 (default). can specify another alpha value
+#' @param alpha = 0.05 (default). can specify another alpha value or a vector \code{`c()`} of alpha values
 #'
 #' @return logical column of significance (i.e., TRUE or FALSE) by comparing p
 #' to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm} result
+#'
+#' @export
 #'
 #' @examples
 #' packages <- c("broom", "bootPermBroom", "dplyr")
@@ -18,8 +19,8 @@
 tidy_lm_add_logical_significance <- function(tidy_df, alpha = 0.05) {
 
   # load and install packages if not already ----
-  require(xfun)
-  packages <- c("broom", "dplyr", "modelr", "tibble", "tidyr")
+  suppressMessages(require(xfun))
+  packages <- c("dplyr", "stringr", "tidyr")
   pkg_attach(packages, message = F, install = T)
 
   # grab column names of p-values ----

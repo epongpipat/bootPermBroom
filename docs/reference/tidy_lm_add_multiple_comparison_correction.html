@@ -123,8 +123,8 @@ as a new column using the <code><a href='https://www.rdocumentation.org/packages
     </tr>
     <tr>
       <th>methods</th>
-      <td><p>a string or vector <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c()</a></code> of p.adjust methods,
-which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all" (default: "all")</p></td>
+      <td><p>= "all" (default). a string or vector <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c()</a></code> of p.adjust methods,
+which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all"</p></td>
     </tr>
     </table>
     
@@ -141,7 +141,13 @@ of a <code>lm</code> result</p>
 
 <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>salary</span> ~ <span class='no'>sex</span>, <span class='kw pkg'>carData</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/carData/topics/Salaries'>Salaries</a></span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>tidy</span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>tidy_lm_add_multiple_comparison_correction</span>()</div><div class='output co'>#&gt; <span class='error'>Error in tidy_lm_add_multiple_comparison_correction(.): could not find function "tidy_lm_add_multiple_comparison_correction"</span></div></pre>
+  <span class='fu'>tidy_lm_add_multiple_comparison_correction</span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 12</span><span>
+#&gt;   term  estimate std.error statistic  p.value p_value_BH p_value_bonferr…
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> (Int…  </span><span style='text-decoration: underline;'>101</span><span>002.     </span><span style='text-decoration: underline;'>4</span><span>809.     21.0  2.68</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-66</span><span>   5.37</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-66</span><span>         5.37</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-66</span><span>
+#&gt; </span><span style='color: #555555;'>2</span><span> sexM…   </span><span style='text-decoration: underline;'>14</span><span>088.     </span><span style='text-decoration: underline;'>5</span><span>065.      2.78 5.67</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 3</span><span>   5.67</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 3</span><span>         1.13</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>
+#&gt; </span><span style='color: #555555;'># … with 5 more variables: p_value_BY </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, p_value_fdr </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,
+#&gt; #   p_value_hochberg </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, p_value_holm </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, p_value_hommel </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

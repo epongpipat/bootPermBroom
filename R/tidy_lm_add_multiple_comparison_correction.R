@@ -4,12 +4,14 @@
 #' @author Ekarin Eric Pongpipat
 #'
 #' @param tidy_df a \code{tidy} table of \code{lm} results
-#' @param methods a string or vector \code{c()} of p.adjust methods,
-#' which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all" (default: "all")
+#' @param methods = "all" (default). a string or vector \code{c()} of p.adjust methods,
+#' which include: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", or "all"
 #'
 #' @return numeric adjusted p.values column using all or defined mutliple
 #' comparison correction methods. this column is added to a \code{tidy} table
 #' of a \code{lm} result
+#'
+#' @export
 #'
 #' @examples
 #' packages <- c("broom", "bootPermBroom", "dplyr")
@@ -21,7 +23,7 @@
 tidy_lm_add_multiple_comparison_correction <- function(tidy_df, methods = "all") {
 
   #  load and install packages if not already ----
-  require(xfun)
+  suppressMessages(require(xfun))
   packages <- c("dplyr", "stringr")
   pkg_attach(packages, message = F, install = T)
 

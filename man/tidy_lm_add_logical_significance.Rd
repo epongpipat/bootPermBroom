@@ -9,9 +9,7 @@ tidy_lm_add_logical_significance(tidy_df, alpha = 0.05)
 \arguments{
 \item{tidy_df}{a \code{tidy} table of \code{lm} results}
 
-\item{alpha}{= 0.05 (default). can specify another alpha value}
-
-\item{p_values}{= "p.value" (default). can specificy another column of p.values}
+\item{alpha}{= 0.05 (default). can specify another alpha value or a vector \code{`c()`} of alpha values}
 }
 \value{
 logical column of significance (i.e., TRUE or FALSE) by comparing p
