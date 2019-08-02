@@ -4,34 +4,39 @@
 #' @param tidy_df a \code{tidy} table of \code{lm} results
 #' @param p_values = "p.value" (default). can specificy another column of p.values
 #' @param alpha = 0.05 (default). can specify another alpha value
-#' @param sig_column_name = "sig.05" (default). can specify another name for the new column (e.g., sig.alpha.value).
 #'
 #' @return logical column of significance (i.e., TRUE or FALSE) by comparing p
-#' to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm}
-#' @export
+#' to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm} result
 #'
 #' @examples
-#' packages <- c("broom", "broomExtra", "dplyr", "modelr", "tibble")
-#' xfun::pkg_attach2(packages, message = F)
-#'
-#' data <- tibble(
-#'   a = scale(sample.int(100), scale = F),
-#'   b = scale(sample.int(100), scale = F),
-#'   c = b^2,
-#'   d = scale(sample.int(100), scale = F)
-#' )
-#'
-#' lm(a ~ b, data) %>%
+#' library(dplyr); library(broom); library(bootPerm)
+#' model <- lm(salary ~ sex, carData::Salaries) %>%
 #'   tidy() %>%
-#'   tidy_lm_add_logical_significance()
-tidy_lm_add_logical_significance <- function(tidy_df, p_values = "p.value", alpha = 0.05, sig_column_name = "sig.05") {
+#'   tidy_lm_add_logical_significance(., c("0.01", "0.05"))
+tidy_lm_add_logical_significance <- function(tidy_df, alpha = 0.05) {
 
-  # load packages if not already ----
-  packages <- c("broom", "dplyr", "modelr", "tibble")
-  xfun::pkg_attach2(packages, message = F)
+  # load and install packages if not already ----
+  require(xfun)
+  packages <- c("broom", "dplyr", "modelr", "tibble", "tidyr")
+  pkg_attach(packages, message = F, install = T)
 
-  tidy_df %>%
-    rowwise() %>%
-    mutate(!!sig_column_name := ifelse(as.numeric(eval(as.name(p_values))) < alpha, TRUE, FALSE)) %>%
-    ungroup()
+  # grab column names of p-values ----
+  col_p_value_list <- colnames(tidy_df) %>%
+    str_subset(., paste0(c("p.value", "p_value"), collapse = "|"))
+
+  # for-loop through each p-value column and specified alpha ----
+  for (i in 1:length(col_p_value_list)) {
+    for (j in 1:length(alpha)) {
+      tidy_df <- tidy_df %>%
+        mutate(sig = ifelse(eval(as.name(col_p_value_list[i])) < alpha[j], T, F))
+
+      colnames(tidy_df)[length(tidy_df)] <- str_replace(col_p_value_list[i], "p.value", "sig") %>%
+        str_replace(., "p_value", "sig") %>%
+        paste0(., "_thr_", alpha[j])
+    }
+
+  }
+  return(tidy_df)
 }
+
+

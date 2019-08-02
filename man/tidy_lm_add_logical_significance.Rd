@@ -4,39 +4,27 @@
 \alias{tidy_lm_add_logical_significance}
 \title{\code{tidy_lm_add_logical_significance}}
 \usage{
-tidy_lm_add_logical_significance(tidy_df, p_values = "p.value",
-  alpha = 0.05, sig_column_name = "sig.05")
+tidy_lm_add_logical_significance(tidy_df, alpha = 0.05)
 }
 \arguments{
 \item{tidy_df}{a \code{tidy} table of \code{lm} results}
 
-\item{p_values}{= "p.value" (default). can specificy another column of p.values}
-
 \item{alpha}{= 0.05 (default). can specify another alpha value}
 
-\item{sig_column_name}{= "sig.05" (default). can specify another name for the new column (e.g., sig.alpha.value).}
+\item{p_values}{= "p.value" (default). can specificy another column of p.values}
 }
 \value{
 logical column of significance (i.e., TRUE or FALSE) by comparing p
-to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm}
+to the cut-off alpha. this column is added to a \code{tidy} table of a \code{lm} result
 }
 \description{
 add a logical column of significance comparing p-values to alpha
 }
 \examples{
-packages <- c("broom", "broomExtra", "dplyr", "modelr", "tibble")
-xfun::pkg_attach2(packages, message = F)
-
-data <- tibble(
-  a = scale(sample.int(100), scale = F),
-  b = scale(sample.int(100), scale = F),
-  c = b^2,
-  d = scale(sample.int(100), scale = F)
-)
-
-lm(a ~ b, data) \%>\%
+library(dplyr); library(broom); library(bootPerm)
+model <- lm(salary ~ sex, carData::Salaries) \%>\%
   tidy() \%>\%
-  tidy_lm_add_logical_significance()
+  tidy_lm_add_logical_significance(., c("0.01", "0.05"))
 }
 \author{
 Ekarin Eric Pongpipat

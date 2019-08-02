@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>tidy_lm_permute</code> — tidy_lm_permute • broomExtra</title>
+<title><code>tidy_lm_permute</code> — tidy_lm_permute • bootPermBroom</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -62,7 +62,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">broomExtra</a>
+        <a class="navbar-link" href="../index.html">bootPermBroom</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -82,7 +82,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/epongpipat/broomExtra">
+  <a href="https://github.com/epongpipat/bootPermExtra">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -100,7 +100,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1><code>tidy_lm_permute</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/epongpipat/broomExtra/blob/master/R/tidy_lm_permute.R'><code>R/tidy_lm_permute.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/epongpipat/bootPermExtra/blob/master/R/tidy_lm_permute.R'><code>R/tidy_lm_permute.R</code></a></small>
     <div class="hidden name"><code>tidy_lm_permute.Rd</code></div>
     </div>
 
@@ -149,7 +149,7 @@
   <span class='kw'>d</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample.int</a></span>(<span class='fl'>100</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>F</span>)
 )
 
-<span class='fu'>tidy_lm_permute</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>formula</span> <span class='kw'>=</span> <span class='st'>"a ~ b + c"</span>, <span class='kw'>n_permute</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: No tidyselect variables were registered</span></div></pre>
+<span class='fu'>tidy_lm_permute</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>formula</span> <span class='kw'>=</span> <span class='st'>"a ~ b + c"</span>, <span class='kw'>n_permute</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>var_permute</span> <span class='kw'>=</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: No tidyselect variables were registered</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
