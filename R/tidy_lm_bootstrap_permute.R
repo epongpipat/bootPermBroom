@@ -23,7 +23,7 @@
 #'
 #' tidy_lm_bootstrap_permute(data, a ~ b, var_permute = "a")
 #' @export
-tidy_lm_bootstrap_permute <- function(data, formula, n_bootstrap = 1000, bootstrap_ci = 0.95, n_permute = 1000, var_permute, r_squared_ci = 0.95) {
+tidy_lm_bootstrap_permute <- function(data, formula, n_bootstrap = 10000, bootstrap_ci = 0.95, n_permute = 10000, var_permute, r_squared_ci = 0.95) {
 
   # load packages if not already ----
   packages <- c("broom", "dplyr", "modelr", "purrr", "tibble")
@@ -95,10 +95,10 @@ tidy_lm_bootstrap_permute <- function(data, formula, n_bootstrap = 1000, bootstr
 
   colnames(bootstrap_permute_tidy_full) <- c(
     "term",
-    paste0("estimate.ci.", bootstrap_ci, c(".ll.", ".ul."), "boot.", n_bootstrap),
-    paste0("p.permute.", n_permute),
-    paste0("r.squared.ci.", r_squared_ci, c(".ll", ".ul"), ".boot.", n_bootstrap),
-    paste0("adj.", paste0("r.squared.ci.", r_squared_ci, c(".ll", ".ul"), ".boot.", n_bootstrap))
+    paste0("estimate_ci_", bootstrap_ci, c("_ll", "_ul"), "_boot_", n_bootstrap),
+    paste0("p_value_permute_", n_permute),
+    paste0("r_sq_ci_", r_squared_ci, c("_ll", "_ul"), "_boot_", n_bootstrap),
+    paste0("r_sq_adj_ci_", r_squared_ci, c("_ll", "_ul"), "_boot_", n_bootstrap)
   )
 
   lm_tidy <- full_join(lm_tidy, bootstrap_permute_tidy_full, by = "term")
